@@ -16,3 +16,14 @@ abstract class UserEntity with _$UserEntity {
   factory UserEntity.fromJson(Map<String, Object?> json) =>
       _$UserEntityFromJson(json);
 }
+
+List<UserEntity> generateMockUsers() {
+  return List.generate(
+    10,
+    (i) => UserEntity(
+      id: i,
+      name: 'Name',
+      email: 'test@gmail.com',
+    ),
+  );
+}

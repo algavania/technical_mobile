@@ -6,14 +6,16 @@ part of 'login_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) =>
-    _LoginResponseModel(
+_$LoginResponseModelImpl _$$LoginResponseModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$LoginResponseModelImpl(
       user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
       token: json['token'] as String,
       refreshToken: json['refresh_token'] as String,
     );
 
-Map<String, dynamic> _$LoginResponseModelToJson(_LoginResponseModel instance) =>
+Map<String, dynamic> _$$LoginResponseModelImplToJson(
+        _$LoginResponseModelImpl instance) =>
     <String, dynamic>{
       'user': instance.user.toJson(),
       'token': instance.token,

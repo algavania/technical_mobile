@@ -33,5 +33,8 @@
   "home": "Home",
   "registerSuccess": "You have successfully registered!",
   "passwordConfirmationError": "Password confirmation does not match",
-  "submit": "Submit"
+  "submit": "Submit",
+  "homeText1": "Let's explore the app!",
+  "homeText2": "Discover new friends and let's make life fun again!",
+  "searchHint": "Search..."
 }

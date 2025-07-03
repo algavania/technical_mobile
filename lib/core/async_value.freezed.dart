@@ -24,7 +24,6 @@ mixin _$AsyncValue<T> {
     required TResult Function(T data) data,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -42,7 +41,6 @@ mixin _$AsyncValue<T> {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial<T> value) initial,
@@ -51,7 +49,6 @@ mixin _$AsyncValue<T> {
     required TResult Function(_Data<T> value) data,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
@@ -83,10 +80,13 @@ class _$AsyncValueCopyWithImpl<T, $Res, $Val extends AsyncValue<T>>
     implements $AsyncValueCopyWith<T, $Res> {
   _$AsyncValueCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +103,9 @@ class __$$InitialImplCopyWithImpl<T, $Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
       : super(_value, _then);
+
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -217,6 +220,9 @@ class __$$LoadingImplCopyWithImpl<T, $Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
       : super(_value, _then);
+
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -334,6 +340,8 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
       _$ErrorImpl<T> _value, $Res Function(_$ErrorImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -372,7 +380,9 @@ class _$ErrorImpl<T> implements _Error<T> {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
@@ -457,7 +467,10 @@ abstract class _Error<T> implements AsyncValue<T> {
   const factory _Error(final String message) = _$ErrorImpl<T>;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -479,6 +492,8 @@ class __$$DataImplCopyWithImpl<T, $Res>
       _$DataImpl<T> _value, $Res Function(_$DataImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -518,7 +533,9 @@ class _$DataImpl<T> implements _Data<T> {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DataImplCopyWith<T, _$DataImpl<T>> get copyWith =>
@@ -603,7 +620,10 @@ abstract class _Data<T> implements AsyncValue<T> {
   const factory _Data(final T data) = _$DataImpl<T>;
 
   T get data;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsyncValue
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DataImplCopyWith<T, _$DataImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

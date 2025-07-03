@@ -10,6 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'package:technical_mobile/core/app_theme_data.dart';
 import 'package:technical_mobile/core/color_values.dart';
 import 'package:technical_mobile/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:technical_mobile/features/home/presentation/bloc/user_bloc.dart';
 import 'package:technical_mobile/injector/injector.dart';
 import 'package:technical_mobile/l10n/l10n.dart';
 import 'package:technical_mobile/routes/router.dart';
@@ -82,6 +83,7 @@ class _AppState extends State<App> {
           child: MultiBlocProvider(
             providers: [
               BlocProvider(create: (_) => Injector.instance<AuthBloc>()),
+              BlocProvider(create: (_) => Injector.instance<UserBloc>()),
             ],
             child: MaterialApp.router(
               theme: AppThemeData.getTheme(context),
