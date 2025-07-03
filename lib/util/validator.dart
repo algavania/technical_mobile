@@ -25,7 +25,9 @@ class Validator {
   }
 
   String? passwordConfirmationValidator(
-      String? password, String? passwordConfirmation) {
+    String? password,
+    String? passwordConfirmation,
+  ) {
     if (password == null || passwordConfirmation == null) {
       return context.l10n.emptyValidatorMessage;
     }

@@ -72,7 +72,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     res.fold(
       (failure) => emit(
-          state.copyWith(registerStatus: AsyncValue.error(failure.message))),
+        state.copyWith(registerStatus: AsyncValue.error(failure.message)),
+      ),
       (_) => emit(state.copyWith(registerStatus: const AsyncValue.data(true))),
     );
   }
@@ -115,7 +116,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         state.copyWith(resetPasswordStatus: AsyncValue.error(failure.message)),
       ),
       (_) => emit(
-          state.copyWith(resetPasswordStatus: const AsyncValue.data(true))),
+        state.copyWith(resetPasswordStatus: const AsyncValue.data(true)),
+      ),
     );
   }
 }

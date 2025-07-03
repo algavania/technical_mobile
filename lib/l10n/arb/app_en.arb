@@ -11,6 +11,12 @@
   "loginText2": "Login to get the full access!",
   "registerText1": "Register",
   "registerText2": "Register to use the full features of the app!",
+  "forgotPasswordText1": "Forgot your password?",
+  "forgotPasswordText2": "Enter your email to reset your password",
+  "forgotPasswordSuccess": "A link to reset your password has been sent to your email",
+  "resetPassword": "Reset Password",
+  "resetPasswordText1": "Reset your password",
+  "resetPasswordText2": "Enter your new password",
   "yourEmail": "Your email",
   "yourPassword": "Your password",
   "yourName": "Your name",
@@ -26,5 +32,6 @@
   "forgotPassword": "Forgot password?",
   "home": "Home",
   "registerSuccess": "You have successfully registered!",
-  "passwordConfirmationError": "Password confirmation does not match"
+  "passwordConfirmationError": "Password confirmation does not match",
+  "submit": "Submit"
 }

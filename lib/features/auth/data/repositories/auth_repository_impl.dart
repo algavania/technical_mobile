@@ -46,7 +46,11 @@ class AuthRepositoryImpl extends AuthRepository {
   ) {
     return safeCall(
       () => dataSource.resetPassword(
-          email, password, passwordConfirmation, token),
+        email,
+        password,
+        passwordConfirmation,
+        token,
+      ),
     );
   }
 

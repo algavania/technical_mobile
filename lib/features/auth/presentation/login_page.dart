@@ -120,9 +120,14 @@ class _LoginPageState extends State<LoginPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text(
-          context.l10n.forgotPassword,
-          style: context.textTheme.displaySmall,
+        GestureDetector(
+          onTap: () {
+            appRouter.push(const ForgotPasswordRoute());
+          },
+          child: Text(
+            context.l10n.forgotPassword,
+            style: context.textTheme.displaySmall,
+          ),
         ),
       ],
     );

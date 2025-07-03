@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:technical_mobile/features/pages.dart';
 
 part 'router.gr.dart';
@@ -24,6 +25,16 @@ class AppRouter extends RootStackRouter {
     CustomRoute<void>(
       page: RegisterRoute.page,
       path: '/register',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute<void>(
+      page: ForgotPasswordRoute.page,
+      path: '/forgot-password',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute<void>(
+      page: ResetPasswordRoute.page,
+      path: '/reset-password',
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
     CustomRoute<void>(

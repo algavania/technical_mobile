@@ -11,6 +11,22 @@
 part of 'router.dart';
 
 /// generated route for
+/// [ForgotPasswordPage]
+class ForgotPasswordRoute extends PageRouteInfo<void> {
+  const ForgotPasswordRoute({List<PageRouteInfo>? children})
+    : super(ForgotPasswordRoute.name, initialChildren: children);
+
+  static const String name = 'ForgotPasswordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ForgotPasswordPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -56,6 +72,53 @@ class RegisterRoute extends PageRouteInfo<void> {
       return const RegisterPage();
     },
   );
+}
+
+/// generated route for
+/// [ResetPasswordPage]
+class ResetPasswordRoute extends PageRouteInfo<ResetPasswordRouteArgs> {
+  ResetPasswordRoute({
+    required String token,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ResetPasswordRoute.name,
+         args: ResetPasswordRouteArgs(token: token, key: key),
+         initialChildren: children,
+       );
+
+  static const String name = 'ResetPasswordRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ResetPasswordRouteArgs>();
+      return ResetPasswordPage(token: args.token, key: args.key);
+    },
+  );
+}
+
+class ResetPasswordRouteArgs {
+  const ResetPasswordRouteArgs({required this.token, this.key});
+
+  final String token;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ResetPasswordRouteArgs{token: $token, key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ResetPasswordRouteArgs) return false;
+    return token == other.token && key == other.key;
+  }
+
+  @override
+  int get hashCode => token.hashCode ^ key.hashCode;
 }
 
 /// generated route for
