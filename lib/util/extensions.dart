@@ -105,3 +105,9 @@ extension FormattedDateTime on DateTime {
     return DateFormat('dd/MM/yyyy').format(this);
   }
 }
+
+extension LayoutExtension on num {
+  Widget get vertical => SizedBox(height: toDouble());
+
+  Widget get horizontal => SizedBox(width: toDouble());
+}

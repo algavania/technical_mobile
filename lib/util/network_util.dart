@@ -1,15 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:technical_mobile/app/view/app.dart';
 import 'package:technical_mobile/core/local_storage_service.dart';
 import 'package:technical_mobile/data/response/response_model.dart';
 import 'package:technical_mobile/error/exceptions.dart';
+import 'package:technical_mobile/features/auth/domain/repositories/auth_repository.dart';
+import 'package:technical_mobile/injector/injector.dart';
+import 'package:technical_mobile/routes/router.dart';
 import 'package:technical_mobile/util/logger.dart';
 
 class NetworkUtil {
   static final Dio _dio = Dio();
+  static final _authRepository = Injector.instance<AuthRepository>();
   static const String baseUrl =
-      'https://example.com/api';
+      'https://e356-2001-448a-50e1-6704-d903-fa5d-ca01-5618.ngrok-free.app/api';
 
   static Future<ResponseModel> post(
       Uri url, {
@@ -61,11 +66,8 @@ class NetworkUtil {
     if (token != null) {
       headerData['Authorization'] = 'Bearer $token';
     }
-    logger
-      ..d('Request URL: $url')
-      ..d('Request Headers: $headerData')
-      ..d('Request Body: $body');
-
+    logger.d('Request URL: $url\nRequest Headers: $headerData'
+        '\nRequest Body: $body');
     try {
       final res = await _getType(type, url, headerData, body, encoding);
       logger.d('Response Data ${res.statusCode}: ${res.data}');
@@ -80,9 +82,43 @@ class NetworkUtil {
       return responseModel;
     } catch (e) {
       if (e is DioException) {
-        logger.d('error info ${e.response?.data} ${e.response?.statusCode}');
+
+        // Check if it's a 401 Unauthorized error
+        if (e.response?.statusCode == 401 && retryCount == 0 && token != null) {
+          // Perform refresh token
+          try {
+            await _authRepository.refreshToken();
+            logger.d('Refresh token successful. Retrying request...');
+
+            // Retry the request with the new token
+            final newToken = await LocalStorageService.getToken();
+            logger.d('new token $newToken');
+            if (newToken != null) {
+              headerData['Authorization'] = newToken;
+              return await _customNetwork(
+                type,
+                url,
+                body,
+                encoding,
+                headers,
+                retryCount: retryCount + 1,
+              );
+            }
+          } catch (loginError) {
+            logger.d('Refresh token failed: $loginError');
+            await _authRepository.logout();
+            throw Failure('Unauthorized.');
+          }
+        }
+
+        // If still unauthorized after retrying, log out the user
+        if (e.response?.statusCode == 401) {
+          await _authRepository.logout();
+          unawaited(appRouter.replace(const LoginRoute()));
+          throw Failure('Unauthorized.');
+        }
+
         if (e.response?.data != null) {
-          logger.d('e response data ${e.response?.data}');
           final responseModel =
           ResponseModel.fromJson(e.response!.data! as Map<String, dynamic>);
           throw Failure(responseModel.message);

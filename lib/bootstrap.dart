@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:technical_mobile/core/local_storage_service.dart';
+import 'package:technical_mobile/injector/injector.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -29,6 +30,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = const AppBlocObserver();
 
   // Add cross-flavor configuration here
+  Injector.init();
+  await Injector.instance.allReady();
   LocalStorageService.init();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(await builder());
 }

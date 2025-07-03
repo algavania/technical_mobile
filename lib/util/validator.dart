@@ -23,4 +23,18 @@ class Validator {
     }
     return null;
   }
+
+  String? passwordConfirmationValidator(
+      String? password, String? passwordConfirmation) {
+    if (password == null || passwordConfirmation == null) {
+      return context.l10n.emptyValidatorMessage;
+    }
+    if (password.trim().isEmpty || passwordConfirmation.trim().isEmpty) {
+      return context.l10n.emptyValidatorMessage;
+    }
+    if (password != passwordConfirmation) {
+      return context.l10n.passwordConfirmationError;
+    }
+    return null;
+  }
 }
