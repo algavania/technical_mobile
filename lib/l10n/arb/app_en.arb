@@ -1,0 +1,8 @@
+{
+  "@@locale": "en",
+  "yes": "Yes",
+  "no": "No",
+  "cancel": "Cancel",
+  "emptyValidatorMessage": "Field cannot be empty",
+  "invalidEmail": "Invalid email address"
+}
