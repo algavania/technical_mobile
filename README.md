@@ -113,3 +113,38 @@ This project uses **GetIt** for dependency injection, **AutoRouter** for routing
 ### Localization
 
 The app includes support for multiple languages. Localization files can be found in the `l10n` folder with `.arb` files, and the app is set to load the correct language based on the user's preferences.
+
+Here's a **README** section to instruct users on how to create the `key.properties` file for your Flutter project, with the necessary configurations for signing:
+
+---
+
+## Creating `key.properties` for Keystore Configuration
+
+Follow the steps below to create the `key.properties` file for signing your Flutter app.
+
+### 1. **Download the Keystore File**
+
+* The keystore file (`technical-keystore.jks`) is available for download from the following Google Drive link:
+
+  [Download Keystore from Google Drive](https://drive.google.com/file/d/1Go96cNSpjjapBj2wx3hDfnUOp2N7EviK/view?usp=sharing)
+
+* Download the keystore file to your local machine.
+
+### 2. **Create `key.properties` File**
+
+* In your Flutter project, navigate to the `android/` folder.
+* Create a new file named `key.properties`.
+
+  The content of the file should be as follows:
+
+  ```properties
+  storePassword=password
+  keyPassword=password
+  keyAlias=upload
+  storeFile=your-path/technical-keystore.jks
+  ```
+
+   * **storePassword**: The password for the keystore (`password`).
+   * **keyPassword**: The password for the key alias inside the keystore (`password`).
+   * **keyAlias**: The alias of the key (`upload`).
+   * **storeFile**: The full path to the keystore file on your local machine. Replace it with the actual path where you downloaded the keystore.
