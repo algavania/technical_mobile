@@ -18,11 +18,13 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc()
       : super(
           const UserState(
-            getUsersStatus: AsyncValue.initial(),
+            getUsersStatus: AsyncValue.loading(),
             getUserStatus: AsyncValue.initial(),
             updateUserStatus: AsyncValue.initial(),
-            getMyProfileStatus: AsyncValue.initial(),
+            getMyProfileStatus: AsyncValue.loading(),
             getUsersLoadingStatus: AsyncValue.initial(),
+            updatePasswordStatus: AsyncValue.initial(),
+            pickedImageStatus: AsyncValue.initial(),
           ),
         ) {
     on<_GetUsers>(_onGetUsers);
@@ -31,16 +33,27 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<_GetMyProfile>(_onGetMyProfile);
     on<_Refresh>(_onRefresh);
     on<_SearchUsers>(_onSearchUsers);
+    on<_UpdatePassword>(_onUpdatePassword);
+    on<_ChangePickedImage>(_onChangePickedImage);
   }
 
   final _getUsers = Injector.instance<GetUsers>();
   final _getUser = Injector.instance<GetUser>();
   final _updateUser = Injector.instance<UpdateUser>();
   final _getMyProfile = Injector.instance<GetMe>();
+  final _updatePassword = Injector.instance<UpdatePassword>();
 
   final _limit = 10;
   int page = 1;
   bool needFetching = false;
+
+  Future<void> _onChangePickedImage(
+    _ChangePickedImage event,
+    Emitter<UserState> emit,
+  ) async {
+    emit(state.copyWith(pickedImageStatus: const AsyncValue.loading()));
+    emit(state.copyWith(pickedImageStatus: AsyncValue.data(event.file)));
+  }
 
   Future<void> _onRefresh(
     _Refresh event,
@@ -122,6 +135,28 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     );
   }
 
+  Future<void> _onUpdatePassword(
+    _UpdatePassword event,
+    Emitter<UserState> emit,
+  ) async {
+    emit(state.copyWith(updatePasswordStatus: const AsyncValue.loading()));
+    final res = await _updatePassword.call(
+      UpdatePasswordParam(
+        oldPassword: event.oldPassword,
+        newPassword: event.newPassword,
+        confirmNewPassword: event.confirmNewPassword,
+      ),
+    );
+    res.fold(
+      (failure) => emit(
+        state.copyWith(updatePasswordStatus: AsyncValue.error(failure.message)),
+      ),
+      (_) => emit(
+        state.copyWith(updatePasswordStatus: const AsyncValue.data(true)),
+      ),
+    );
+  }
+
   Future<void> _onUpdateUser(
     _UpdateUser event,
     Emitter<UserState> emit,
@@ -142,6 +177,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         state.copyWith(
           updateUserStatus: AsyncValue.data(user),
           getMyProfileStatus: AsyncValue.data(user),
+            pickedImageStatus: const AsyncValue.initial(),
         ),
       ),
     );

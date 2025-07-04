@@ -10,11 +10,13 @@ class UpdateUserParam {
   UpdateUserParam({
     required this.name,
     required this.email,
-    required this.image,
+    this.image,
+    this.description,
   });
 
   final String name;
   final String email;
+  final String? description;
   final File? image;
 }
 
@@ -28,6 +30,7 @@ class UpdateUser
   Future<Either<Failure, UserEntity>> call(UpdateUserParam params) {
     return _repository.updateUser(
       params.name,
+      params.description,
       params.email,
       params.image,
     );

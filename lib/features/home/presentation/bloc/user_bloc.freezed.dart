@@ -23,9 +23,14 @@ mixin _$UserEvent {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,8 +40,14 @@ mixin _$UserEvent {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,8 +57,14 @@ mixin _$UserEvent {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,7 +76,9 @@ mixin _$UserEvent {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,7 +89,9 @@ mixin _$UserEvent {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,7 +102,9 @@ mixin _$UserEvent {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,9 +176,14 @@ class _$StartedImpl implements _Started {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) {
     return started();
   }
@@ -168,8 +196,14 @@ class _$StartedImpl implements _Started {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) {
     return started?.call();
   }
@@ -182,8 +216,14 @@ class _$StartedImpl implements _Started {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -201,7 +241,9 @@ class _$StartedImpl implements _Started {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) {
     return started(this);
   }
@@ -215,7 +257,9 @@ class _$StartedImpl implements _Started {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) {
     return started?.call(this);
   }
@@ -229,7 +273,9 @@ class _$StartedImpl implements _Started {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -289,9 +335,14 @@ class _$GetUsersImpl implements _GetUsers {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) {
     return getUsers();
   }
@@ -304,8 +355,14 @@ class _$GetUsersImpl implements _GetUsers {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) {
     return getUsers?.call();
   }
@@ -318,8 +375,14 @@ class _$GetUsersImpl implements _GetUsers {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) {
     if (getUsers != null) {
@@ -337,7 +400,9 @@ class _$GetUsersImpl implements _GetUsers {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) {
     return getUsers(this);
   }
@@ -351,7 +416,9 @@ class _$GetUsersImpl implements _GetUsers {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) {
     return getUsers?.call(this);
   }
@@ -365,7 +432,9 @@ class _$GetUsersImpl implements _GetUsers {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) {
     if (getUsers != null) {
@@ -425,9 +494,14 @@ class _$RefreshImpl implements _Refresh {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) {
     return refresh();
   }
@@ -440,8 +514,14 @@ class _$RefreshImpl implements _Refresh {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) {
     return refresh?.call();
   }
@@ -454,8 +534,14 @@ class _$RefreshImpl implements _Refresh {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -473,7 +559,9 @@ class _$RefreshImpl implements _Refresh {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) {
     return refresh(this);
   }
@@ -487,7 +575,9 @@ class _$RefreshImpl implements _Refresh {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) {
     return refresh?.call(this);
   }
@@ -501,7 +591,9 @@ class _$RefreshImpl implements _Refresh {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -588,9 +680,14 @@ class _$SearchUsersImpl implements _SearchUsers {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) {
     return searchUsers(value);
   }
@@ -603,8 +700,14 @@ class _$SearchUsersImpl implements _SearchUsers {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) {
     return searchUsers?.call(value);
   }
@@ -617,8 +720,14 @@ class _$SearchUsersImpl implements _SearchUsers {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) {
     if (searchUsers != null) {
@@ -636,7 +745,9 @@ class _$SearchUsersImpl implements _SearchUsers {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) {
     return searchUsers(this);
   }
@@ -650,7 +761,9 @@ class _$SearchUsersImpl implements _SearchUsers {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) {
     return searchUsers?.call(this);
   }
@@ -664,7 +777,9 @@ class _$SearchUsersImpl implements _SearchUsers {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) {
     if (searchUsers != null) {
@@ -759,9 +874,14 @@ class _$GetUserImpl implements _GetUser {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) {
     return getUser(id);
   }
@@ -774,8 +894,14 @@ class _$GetUserImpl implements _GetUser {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) {
     return getUser?.call(id);
   }
@@ -788,8 +914,14 @@ class _$GetUserImpl implements _GetUser {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -807,7 +939,9 @@ class _$GetUserImpl implements _GetUser {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) {
     return getUser(this);
   }
@@ -821,7 +955,9 @@ class _$GetUserImpl implements _GetUser {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) {
     return getUser?.call(this);
   }
@@ -835,7 +971,9 @@ class _$GetUserImpl implements _GetUser {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -863,7 +1001,7 @@ abstract class _$$UpdateUserImplCopyWith<$Res> {
           _$UpdateUserImpl value, $Res Function(_$UpdateUserImpl) then) =
       __$$UpdateUserImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name, String email, File? image});
+  $Res call({String name, String? description, String email, File? image});
 }
 
 /// @nodoc
@@ -880,6 +1018,7 @@ class __$$UpdateUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? description = freezed,
     Object? email = null,
     Object? image = freezed,
   }) {
@@ -888,6 +1027,10 @@ class __$$UpdateUserImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -903,10 +1046,12 @@ class __$$UpdateUserImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateUserImpl implements _UpdateUser {
-  const _$UpdateUserImpl(this.name, this.email, this.image);
+  const _$UpdateUserImpl(this.name, this.description, this.email, this.image);
 
   @override
   final String name;
+  @override
+  final String? description;
   @override
   final String email;
   @override
@@ -914,7 +1059,7 @@ class _$UpdateUserImpl implements _UpdateUser {
 
   @override
   String toString() {
-    return 'UserEvent.updateUser(name: $name, email: $email, image: $image)';
+    return 'UserEvent.updateUser(name: $name, description: $description, email: $email, image: $image)';
   }
 
   @override
@@ -923,12 +1068,14 @@ class _$UpdateUserImpl implements _UpdateUser {
         (other.runtimeType == runtimeType &&
             other is _$UpdateUserImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.image, image) || other.image == image));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, image);
+  int get hashCode => Object.hash(runtimeType, name, description, email, image);
 
   /// Create a copy of UserEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -946,11 +1093,16 @@ class _$UpdateUserImpl implements _UpdateUser {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) {
-    return updateUser(name, email, image);
+    return updateUser(name, description, email, image);
   }
 
   @override
@@ -961,10 +1113,16 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) {
-    return updateUser?.call(name, email, image);
+    return updateUser?.call(name, description, email, image);
   }
 
   @override
@@ -975,12 +1133,18 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) {
     if (updateUser != null) {
-      return updateUser(name, email, image);
+      return updateUser(name, description, email, image);
     }
     return orElse();
   }
@@ -994,7 +1158,9 @@ class _$UpdateUserImpl implements _UpdateUser {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) {
     return updateUser(this);
   }
@@ -1008,7 +1174,9 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) {
     return updateUser?.call(this);
   }
@@ -1022,7 +1190,9 @@ class _$UpdateUserImpl implements _UpdateUser {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) {
     if (updateUser != null) {
@@ -1033,11 +1203,11 @@ class _$UpdateUserImpl implements _UpdateUser {
 }
 
 abstract class _UpdateUser implements UserEvent {
-  const factory _UpdateUser(
-          final String name, final String email, final File? image) =
-      _$UpdateUserImpl;
+  const factory _UpdateUser(final String name, final String? description,
+      final String email, final File? image) = _$UpdateUserImpl;
 
   String get name;
+  String? get description;
   String get email;
   File? get image;
 
@@ -1045,6 +1215,228 @@ abstract class _UpdateUser implements UserEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateUserImplCopyWith<_$UpdateUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdatePasswordImplCopyWith<$Res> {
+  factory _$$UpdatePasswordImplCopyWith(_$UpdatePasswordImpl value,
+          $Res Function(_$UpdatePasswordImpl) then) =
+      __$$UpdatePasswordImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String oldPassword, String newPassword, String confirmNewPassword});
+}
+
+/// @nodoc
+class __$$UpdatePasswordImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$UpdatePasswordImpl>
+    implements _$$UpdatePasswordImplCopyWith<$Res> {
+  __$$UpdatePasswordImplCopyWithImpl(
+      _$UpdatePasswordImpl _value, $Res Function(_$UpdatePasswordImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? oldPassword = null,
+    Object? newPassword = null,
+    Object? confirmNewPassword = null,
+  }) {
+    return _then(_$UpdatePasswordImpl(
+      null == oldPassword
+          ? _value.oldPassword
+          : oldPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == newPassword
+          ? _value.newPassword
+          : newPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == confirmNewPassword
+          ? _value.confirmNewPassword
+          : confirmNewPassword // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdatePasswordImpl implements _UpdatePassword {
+  const _$UpdatePasswordImpl(
+      this.oldPassword, this.newPassword, this.confirmNewPassword);
+
+  @override
+  final String oldPassword;
+  @override
+  final String newPassword;
+  @override
+  final String confirmNewPassword;
+
+  @override
+  String toString() {
+    return 'UserEvent.updatePassword(oldPassword: $oldPassword, newPassword: $newPassword, confirmNewPassword: $confirmNewPassword)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePasswordImpl &&
+            (identical(other.oldPassword, oldPassword) ||
+                other.oldPassword == oldPassword) &&
+            (identical(other.newPassword, newPassword) ||
+                other.newPassword == newPassword) &&
+            (identical(other.confirmNewPassword, confirmNewPassword) ||
+                other.confirmNewPassword == confirmNewPassword));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, oldPassword, newPassword, confirmNewPassword);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePasswordImplCopyWith<_$UpdatePasswordImpl> get copyWith =>
+      __$$UpdatePasswordImplCopyWithImpl<_$UpdatePasswordImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getUsers,
+    required TResult Function() refresh,
+    required TResult Function(String value) searchUsers,
+    required TResult Function(int id) getUser,
+    required TResult Function(
+            String name, String? description, String email, File? image)
+        updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
+    required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
+  }) {
+    return updatePassword(oldPassword, newPassword, confirmNewPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getUsers,
+    TResult? Function()? refresh,
+    TResult? Function(String value)? searchUsers,
+    TResult? Function(int id)? getUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
+    TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
+  }) {
+    return updatePassword?.call(oldPassword, newPassword, confirmNewPassword);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getUsers,
+    TResult Function()? refresh,
+    TResult Function(String value)? searchUsers,
+    TResult Function(int id)? getUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
+    TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
+    required TResult orElse(),
+  }) {
+    if (updatePassword != null) {
+      return updatePassword(oldPassword, newPassword, confirmNewPassword);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetUsers value) getUsers,
+    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_SearchUsers value) searchUsers,
+    required TResult Function(_GetUser value) getUser,
+    required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
+  }) {
+    return updatePassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetUsers value)? getUsers,
+    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_SearchUsers value)? searchUsers,
+    TResult? Function(_GetUser value)? getUser,
+    TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
+  }) {
+    return updatePassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetUsers value)? getUsers,
+    TResult Function(_Refresh value)? refresh,
+    TResult Function(_SearchUsers value)? searchUsers,
+    TResult Function(_GetUser value)? getUser,
+    TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
+    required TResult orElse(),
+  }) {
+    if (updatePassword != null) {
+      return updatePassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdatePassword implements UserEvent {
+  const factory _UpdatePassword(
+      final String oldPassword,
+      final String newPassword,
+      final String confirmNewPassword) = _$UpdatePasswordImpl;
+
+  String get oldPassword;
+  String get newPassword;
+  String get confirmNewPassword;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdatePasswordImplCopyWith<_$UpdatePasswordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1094,9 +1486,14 @@ class _$GetMyProfileImpl implements _GetMyProfile {
     required TResult Function() refresh,
     required TResult Function(String value) searchUsers,
     required TResult Function(int id) getUser,
-    required TResult Function(String name, String email, File? image)
+    required TResult Function(
+            String name, String? description, String email, File? image)
         updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
     required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
   }) {
     return getMyProfile();
   }
@@ -1109,8 +1506,14 @@ class _$GetMyProfileImpl implements _GetMyProfile {
     TResult? Function()? refresh,
     TResult? Function(String value)? searchUsers,
     TResult? Function(int id)? getUser,
-    TResult? Function(String name, String email, File? image)? updateUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
   }) {
     return getMyProfile?.call();
   }
@@ -1123,8 +1526,14 @@ class _$GetMyProfileImpl implements _GetMyProfile {
     TResult Function()? refresh,
     TResult Function(String value)? searchUsers,
     TResult Function(int id)? getUser,
-    TResult Function(String name, String email, File? image)? updateUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
     TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
     required TResult orElse(),
   }) {
     if (getMyProfile != null) {
@@ -1142,7 +1551,9 @@ class _$GetMyProfileImpl implements _GetMyProfile {
     required TResult Function(_SearchUsers value) searchUsers,
     required TResult Function(_GetUser value) getUser,
     required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
     required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
   }) {
     return getMyProfile(this);
   }
@@ -1156,7 +1567,9 @@ class _$GetMyProfileImpl implements _GetMyProfile {
     TResult? Function(_SearchUsers value)? searchUsers,
     TResult? Function(_GetUser value)? getUser,
     TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
     TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
   }) {
     return getMyProfile?.call(this);
   }
@@ -1170,7 +1583,9 @@ class _$GetMyProfileImpl implements _GetMyProfile {
     TResult Function(_SearchUsers value)? searchUsers,
     TResult Function(_GetUser value)? getUser,
     TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
     TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
     required TResult orElse(),
   }) {
     if (getMyProfile != null) {
@@ -1185,6 +1600,201 @@ abstract class _GetMyProfile implements UserEvent {
 }
 
 /// @nodoc
+abstract class _$$ChangePickedImageImplCopyWith<$Res> {
+  factory _$$ChangePickedImageImplCopyWith(_$ChangePickedImageImpl value,
+          $Res Function(_$ChangePickedImageImpl) then) =
+      __$$ChangePickedImageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({File? file});
+}
+
+/// @nodoc
+class __$$ChangePickedImageImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$ChangePickedImageImpl>
+    implements _$$ChangePickedImageImplCopyWith<$Res> {
+  __$$ChangePickedImageImplCopyWithImpl(_$ChangePickedImageImpl _value,
+      $Res Function(_$ChangePickedImageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = freezed,
+  }) {
+    return _then(_$ChangePickedImageImpl(
+      freezed == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangePickedImageImpl implements _ChangePickedImage {
+  const _$ChangePickedImageImpl(this.file);
+
+  @override
+  final File? file;
+
+  @override
+  String toString() {
+    return 'UserEvent.changePickedImage(file: $file)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePickedImageImpl &&
+            (identical(other.file, file) || other.file == file));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, file);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePickedImageImplCopyWith<_$ChangePickedImageImpl> get copyWith =>
+      __$$ChangePickedImageImplCopyWithImpl<_$ChangePickedImageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getUsers,
+    required TResult Function() refresh,
+    required TResult Function(String value) searchUsers,
+    required TResult Function(int id) getUser,
+    required TResult Function(
+            String name, String? description, String email, File? image)
+        updateUser,
+    required TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)
+        updatePassword,
+    required TResult Function() getMyProfile,
+    required TResult Function(File? file) changePickedImage,
+  }) {
+    return changePickedImage(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getUsers,
+    TResult? Function()? refresh,
+    TResult? Function(String value)? searchUsers,
+    TResult? Function(int id)? getUser,
+    TResult? Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult? Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
+    TResult? Function()? getMyProfile,
+    TResult? Function(File? file)? changePickedImage,
+  }) {
+    return changePickedImage?.call(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getUsers,
+    TResult Function()? refresh,
+    TResult Function(String value)? searchUsers,
+    TResult Function(int id)? getUser,
+    TResult Function(
+            String name, String? description, String email, File? image)?
+        updateUser,
+    TResult Function(
+            String oldPassword, String newPassword, String confirmNewPassword)?
+        updatePassword,
+    TResult Function()? getMyProfile,
+    TResult Function(File? file)? changePickedImage,
+    required TResult orElse(),
+  }) {
+    if (changePickedImage != null) {
+      return changePickedImage(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetUsers value) getUsers,
+    required TResult Function(_Refresh value) refresh,
+    required TResult Function(_SearchUsers value) searchUsers,
+    required TResult Function(_GetUser value) getUser,
+    required TResult Function(_UpdateUser value) updateUser,
+    required TResult Function(_UpdatePassword value) updatePassword,
+    required TResult Function(_GetMyProfile value) getMyProfile,
+    required TResult Function(_ChangePickedImage value) changePickedImage,
+  }) {
+    return changePickedImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetUsers value)? getUsers,
+    TResult? Function(_Refresh value)? refresh,
+    TResult? Function(_SearchUsers value)? searchUsers,
+    TResult? Function(_GetUser value)? getUser,
+    TResult? Function(_UpdateUser value)? updateUser,
+    TResult? Function(_UpdatePassword value)? updatePassword,
+    TResult? Function(_GetMyProfile value)? getMyProfile,
+    TResult? Function(_ChangePickedImage value)? changePickedImage,
+  }) {
+    return changePickedImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetUsers value)? getUsers,
+    TResult Function(_Refresh value)? refresh,
+    TResult Function(_SearchUsers value)? searchUsers,
+    TResult Function(_GetUser value)? getUser,
+    TResult Function(_UpdateUser value)? updateUser,
+    TResult Function(_UpdatePassword value)? updatePassword,
+    TResult Function(_GetMyProfile value)? getMyProfile,
+    TResult Function(_ChangePickedImage value)? changePickedImage,
+    required TResult orElse(),
+  }) {
+    if (changePickedImage != null) {
+      return changePickedImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangePickedImage implements UserEvent {
+  const factory _ChangePickedImage(final File? file) = _$ChangePickedImageImpl;
+
+  File? get file;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangePickedImageImplCopyWith<_$ChangePickedImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UserState {
   AsyncValue<List<UserEntity>> get getUsersStatus =>
       throw _privateConstructorUsedError;
@@ -1194,8 +1804,11 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   AsyncValue<UserEntity> get updateUserStatus =>
       throw _privateConstructorUsedError;
+  AsyncValue<bool> get updatePasswordStatus =>
+      throw _privateConstructorUsedError;
   AsyncValue<UserEntity> get getMyProfileStatus =>
       throw _privateConstructorUsedError;
+  AsyncValue<File?> get pickedImageStatus => throw _privateConstructorUsedError;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -1214,13 +1827,17 @@ abstract class $UserStateCopyWith<$Res> {
       AsyncValue<bool> getUsersLoadingStatus,
       AsyncValue<UserEntity> getUserStatus,
       AsyncValue<UserEntity> updateUserStatus,
-      AsyncValue<UserEntity> getMyProfileStatus});
+      AsyncValue<bool> updatePasswordStatus,
+      AsyncValue<UserEntity> getMyProfileStatus,
+      AsyncValue<File?> pickedImageStatus});
 
   $AsyncValueCopyWith<List<UserEntity>, $Res> get getUsersStatus;
   $AsyncValueCopyWith<bool, $Res> get getUsersLoadingStatus;
   $AsyncValueCopyWith<UserEntity, $Res> get getUserStatus;
   $AsyncValueCopyWith<UserEntity, $Res> get updateUserStatus;
+  $AsyncValueCopyWith<bool, $Res> get updatePasswordStatus;
   $AsyncValueCopyWith<UserEntity, $Res> get getMyProfileStatus;
+  $AsyncValueCopyWith<File?, $Res> get pickedImageStatus;
 }
 
 /// @nodoc
@@ -1242,7 +1859,9 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
     Object? getUsersLoadingStatus = null,
     Object? getUserStatus = null,
     Object? updateUserStatus = null,
+    Object? updatePasswordStatus = null,
     Object? getMyProfileStatus = null,
+    Object? pickedImageStatus = null,
   }) {
     return _then(_value.copyWith(
       getUsersStatus: null == getUsersStatus
@@ -1261,10 +1880,18 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
           ? _value.updateUserStatus
           : updateUserStatus // ignore: cast_nullable_to_non_nullable
               as AsyncValue<UserEntity>,
+      updatePasswordStatus: null == updatePasswordStatus
+          ? _value.updatePasswordStatus
+          : updatePasswordStatus // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<bool>,
       getMyProfileStatus: null == getMyProfileStatus
           ? _value.getMyProfileStatus
           : getMyProfileStatus // ignore: cast_nullable_to_non_nullable
               as AsyncValue<UserEntity>,
+      pickedImageStatus: null == pickedImageStatus
+          ? _value.pickedImageStatus
+          : pickedImageStatus // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<File?>,
     ) as $Val);
   }
 
@@ -1315,10 +1942,31 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
+  $AsyncValueCopyWith<bool, $Res> get updatePasswordStatus {
+    return $AsyncValueCopyWith<bool, $Res>(_value.updatePasswordStatus,
+        (value) {
+      return _then(_value.copyWith(updatePasswordStatus: value) as $Val);
+    });
+  }
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $AsyncValueCopyWith<UserEntity, $Res> get getMyProfileStatus {
     return $AsyncValueCopyWith<UserEntity, $Res>(_value.getMyProfileStatus,
         (value) {
       return _then(_value.copyWith(getMyProfileStatus: value) as $Val);
+    });
+  }
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AsyncValueCopyWith<File?, $Res> get pickedImageStatus {
+    return $AsyncValueCopyWith<File?, $Res>(_value.pickedImageStatus, (value) {
+      return _then(_value.copyWith(pickedImageStatus: value) as $Val);
     });
   }
 }
@@ -1336,7 +1984,9 @@ abstract class _$$UserStateImplCopyWith<$Res>
       AsyncValue<bool> getUsersLoadingStatus,
       AsyncValue<UserEntity> getUserStatus,
       AsyncValue<UserEntity> updateUserStatus,
-      AsyncValue<UserEntity> getMyProfileStatus});
+      AsyncValue<bool> updatePasswordStatus,
+      AsyncValue<UserEntity> getMyProfileStatus,
+      AsyncValue<File?> pickedImageStatus});
 
   @override
   $AsyncValueCopyWith<List<UserEntity>, $Res> get getUsersStatus;
@@ -1347,7 +1997,11 @@ abstract class _$$UserStateImplCopyWith<$Res>
   @override
   $AsyncValueCopyWith<UserEntity, $Res> get updateUserStatus;
   @override
+  $AsyncValueCopyWith<bool, $Res> get updatePasswordStatus;
+  @override
   $AsyncValueCopyWith<UserEntity, $Res> get getMyProfileStatus;
+  @override
+  $AsyncValueCopyWith<File?, $Res> get pickedImageStatus;
 }
 
 /// @nodoc
@@ -1367,7 +2021,9 @@ class __$$UserStateImplCopyWithImpl<$Res>
     Object? getUsersLoadingStatus = null,
     Object? getUserStatus = null,
     Object? updateUserStatus = null,
+    Object? updatePasswordStatus = null,
     Object? getMyProfileStatus = null,
+    Object? pickedImageStatus = null,
   }) {
     return _then(_$UserStateImpl(
       getUsersStatus: null == getUsersStatus
@@ -1386,10 +2042,18 @@ class __$$UserStateImplCopyWithImpl<$Res>
           ? _value.updateUserStatus
           : updateUserStatus // ignore: cast_nullable_to_non_nullable
               as AsyncValue<UserEntity>,
+      updatePasswordStatus: null == updatePasswordStatus
+          ? _value.updatePasswordStatus
+          : updatePasswordStatus // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<bool>,
       getMyProfileStatus: null == getMyProfileStatus
           ? _value.getMyProfileStatus
           : getMyProfileStatus // ignore: cast_nullable_to_non_nullable
               as AsyncValue<UserEntity>,
+      pickedImageStatus: null == pickedImageStatus
+          ? _value.pickedImageStatus
+          : pickedImageStatus // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<File?>,
     ));
   }
 }
@@ -1402,7 +2066,9 @@ class _$UserStateImpl implements _UserState {
       required this.getUsersLoadingStatus,
       required this.getUserStatus,
       required this.updateUserStatus,
-      required this.getMyProfileStatus});
+      required this.updatePasswordStatus,
+      required this.getMyProfileStatus,
+      required this.pickedImageStatus});
 
   @override
   final AsyncValue<List<UserEntity>> getUsersStatus;
@@ -1413,11 +2079,15 @@ class _$UserStateImpl implements _UserState {
   @override
   final AsyncValue<UserEntity> updateUserStatus;
   @override
+  final AsyncValue<bool> updatePasswordStatus;
+  @override
   final AsyncValue<UserEntity> getMyProfileStatus;
+  @override
+  final AsyncValue<File?> pickedImageStatus;
 
   @override
   String toString() {
-    return 'UserState(getUsersStatus: $getUsersStatus, getUsersLoadingStatus: $getUsersLoadingStatus, getUserStatus: $getUserStatus, updateUserStatus: $updateUserStatus, getMyProfileStatus: $getMyProfileStatus)';
+    return 'UserState(getUsersStatus: $getUsersStatus, getUsersLoadingStatus: $getUsersLoadingStatus, getUserStatus: $getUserStatus, updateUserStatus: $updateUserStatus, updatePasswordStatus: $updatePasswordStatus, getMyProfileStatus: $getMyProfileStatus, pickedImageStatus: $pickedImageStatus)';
   }
 
   @override
@@ -1433,8 +2103,12 @@ class _$UserStateImpl implements _UserState {
                 other.getUserStatus == getUserStatus) &&
             (identical(other.updateUserStatus, updateUserStatus) ||
                 other.updateUserStatus == updateUserStatus) &&
+            (identical(other.updatePasswordStatus, updatePasswordStatus) ||
+                other.updatePasswordStatus == updatePasswordStatus) &&
             (identical(other.getMyProfileStatus, getMyProfileStatus) ||
-                other.getMyProfileStatus == getMyProfileStatus));
+                other.getMyProfileStatus == getMyProfileStatus) &&
+            (identical(other.pickedImageStatus, pickedImageStatus) ||
+                other.pickedImageStatus == pickedImageStatus));
   }
 
   @override
@@ -1444,7 +2118,9 @@ class _$UserStateImpl implements _UserState {
       getUsersLoadingStatus,
       getUserStatus,
       updateUserStatus,
-      getMyProfileStatus);
+      updatePasswordStatus,
+      getMyProfileStatus,
+      pickedImageStatus);
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.
@@ -1457,12 +2133,13 @@ class _$UserStateImpl implements _UserState {
 
 abstract class _UserState implements UserState {
   const factory _UserState(
-          {required final AsyncValue<List<UserEntity>> getUsersStatus,
-          required final AsyncValue<bool> getUsersLoadingStatus,
-          required final AsyncValue<UserEntity> getUserStatus,
-          required final AsyncValue<UserEntity> updateUserStatus,
-          required final AsyncValue<UserEntity> getMyProfileStatus}) =
-      _$UserStateImpl;
+      {required final AsyncValue<List<UserEntity>> getUsersStatus,
+      required final AsyncValue<bool> getUsersLoadingStatus,
+      required final AsyncValue<UserEntity> getUserStatus,
+      required final AsyncValue<UserEntity> updateUserStatus,
+      required final AsyncValue<bool> updatePasswordStatus,
+      required final AsyncValue<UserEntity> getMyProfileStatus,
+      required final AsyncValue<File?> pickedImageStatus}) = _$UserStateImpl;
 
   @override
   AsyncValue<List<UserEntity>> get getUsersStatus;
@@ -1473,7 +2150,11 @@ abstract class _UserState implements UserState {
   @override
   AsyncValue<UserEntity> get updateUserStatus;
   @override
+  AsyncValue<bool> get updatePasswordStatus;
+  @override
   AsyncValue<UserEntity> get getMyProfileStatus;
+  @override
+  AsyncValue<File?> get pickedImageStatus;
 
   /// Create a copy of UserState
   /// with the given fields replaced by the non-null parameter values.

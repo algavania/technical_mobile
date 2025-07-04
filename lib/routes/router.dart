@@ -42,5 +42,20 @@ class AppRouter extends RootStackRouter {
       path: '/home',
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
+    CustomRoute<void>(
+      page: ProfileRoute.page,
+      path: '/profile',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute<void>(
+      page: EditPasswordRoute.page,
+      path: '/edit-password',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute<void>(
+      page: EditProfileRoute.page,
+      path: '/edit-profile',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
   ];
 }

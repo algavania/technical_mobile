@@ -35,9 +35,32 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<Either<Failure, UserEntity>> updateUser(
     String name,
+    String? description,
     String email,
     File? image,
   ) {
-    return safeCall(() => dataSource.updateUser(name, email, image));
+    return safeCall(
+      () => dataSource.updateUser(
+        name,
+        description,
+        email,
+        image,
+      ),
+    );
+  }
+
+  @override
+  Future<Either<Failure, void>> updatePassword(
+    String oldPassword,
+    String newPassword,
+    String confirmNewPassword,
+  ) {
+    return safeCall(
+      () => dataSource.updatePassword(
+        oldPassword,
+        newPassword,
+        confirmNewPassword,
+      ),
+    );
   }
 }

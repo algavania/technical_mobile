@@ -51,6 +51,11 @@ class UseCasesModule {
           Injector.instance<UserRepository>(),
         ),
       )
+      ..registerLazySingleton<UpdatePassword>(
+        () => UpdatePassword(
+          Injector.instance<UserRepository>(),
+        ),
+      )
       ..registerLazySingleton<GetMe>(
         () => GetMe(
           Injector.instance<UserRepository>(),

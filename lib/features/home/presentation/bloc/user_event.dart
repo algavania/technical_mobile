@@ -14,9 +14,18 @@ class UserEvent with _$UserEvent {
 
   const factory UserEvent.updateUser(
     String name,
+    String? description,
     String email,
     File? image,
   ) = _UpdateUser;
 
+  const factory UserEvent.updatePassword(
+    String oldPassword,
+    String newPassword,
+    String confirmNewPassword,
+  ) = _UpdatePassword;
+
   const factory UserEvent.getMyProfile() = _GetMyProfile;
+
+  const factory UserEvent.changePickedImage(File? file) = _ChangePickedImage;
 }

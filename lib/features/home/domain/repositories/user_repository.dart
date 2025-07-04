@@ -18,7 +18,14 @@ abstract class UserRepository {
 
   Future<Either<Failure, UserEntity>> updateUser(
     String name,
+    String? description,
     String email,
     File? image,
+  );
+
+  Future<Either<Failure, void>> updatePassword(
+    String oldPassword,
+    String newPassword,
+    String confirmNewPassword,
   );
 }

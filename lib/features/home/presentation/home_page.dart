@@ -1,14 +1,18 @@
 import 'package:auto_route/annotations.dart';
 import 'package:easy_debounce/easy_debounce.dart';
+import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:technical_mobile/app/app.dart';
 import 'package:technical_mobile/core/color_values.dart';
 import 'package:technical_mobile/core/styles.dart';
 import 'package:technical_mobile/features/auth/domain/entities/user/user_entity.dart';
 import 'package:technical_mobile/features/home/presentation/bloc/user_bloc.dart';
 import 'package:technical_mobile/injector/injector.dart';
 import 'package:technical_mobile/l10n/l10n.dart';
+import 'package:technical_mobile/routes/router.dart';
 import 'package:technical_mobile/util/extensions.dart';
 import 'package:technical_mobile/widgets/custom_gesture_unfocus.dart';
 import 'package:technical_mobile/widgets/custom_text_field.dart';
@@ -50,11 +54,16 @@ class _HomePageState extends State<HomePage> {
                   orElse: () => null,
                   data: (data) => data.data,
                 );
-                return CircleAvatar(
-                  radius: 20,
-                  backgroundImage: user?.imageUrl != null
-                      ? NetworkImage(user!.imageUrl!)
-                      : const AssetImage('assets/images/avatar.webp'),
+                return GestureDetector(
+                  onTap: () {
+                    appRouter.push(const ProfileRoute());
+                  },
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundImage: user?.imageUrl != null
+                        ? NetworkImage(user!.imageUrl!)
+                        : const AssetImage('assets/images/avatar.webp'),
+                  ),
                 );
               },
             ),
@@ -66,33 +75,43 @@ class _HomePageState extends State<HomePage> {
             _bloc.add(const UserEvent.refresh());
             await Future<void>.delayed(const Duration(milliseconds: 500));
           },
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            controller: _scrollController
-              ..addListener(() async {
-                final isLoading = _bloc.state.getUsersLoadingStatus
-                    .maybeMap(orElse: () => false, loading: (_) => true);
-                if (_scrollController.offset ==
-                        _scrollController.position.maxScrollExtent &&
-                    !isLoading &&
-                    _bloc.needFetching) {
-                  _bloc.add(const UserEvent.getUsers());
-                }
-              }),
-            child: Padding(
-              padding: const EdgeInsets.all(Styles.defaultPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: Styles.defaultSpacing,
-                children: [
-                  _buildSectionWidget(),
-                  Styles.mediumSpacing.vertical,
-                  _buildSearchWidget(),
-                  1.vertical,
-                  _buildListWidget(),
-                ],
+          child: Stack(
+            children: [
+              ListView(),
+              SingleChildScrollView(
+                controller: _scrollController
+                  ..addListener(() async {
+                    final isLoading = _bloc.state.getUsersLoadingStatus
+                        .maybeMap(orElse: () => false, loading: (_) => true);
+                    if (_scrollController.offset ==
+                            _scrollController.position.maxScrollExtent &&
+                        !isLoading &&
+                        _bloc.needFetching) {
+                      EasyThrottle.throttle(
+                        'load-more',
+                        const Duration(milliseconds: 500),
+                        () {
+                          _bloc.add(const UserEvent.getUsers());
+                        },
+                      );
+                    }
+                  }),
+                child: Padding(
+                  padding: const EdgeInsets.all(Styles.defaultPadding),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: Styles.defaultSpacing,
+                    children: [
+                      _buildSectionWidget(),
+                      Styles.mediumSpacing.vertical,
+                      _buildSearchWidget(),
+                      1.vertical,
+                      _buildListWidget(),
+                    ],
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -127,16 +146,23 @@ class _HomePageState extends State<HomePage> {
           enabled: isLoading,
           child: Column(
             children: [
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (_, i) => _buildUserItemWidget(users[i]),
-                separatorBuilder: (_, __) => Styles.defaultSpacing.vertical,
-                itemCount: users.length,
-              ),
+              if (users.isEmpty)
+                Column(
+                  children: [
+                    Lottie.asset('assets/lottie/no_data.json'),
+                    Text(context.l10n.noData),
+                  ],
+                )
+              else
+                ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (_, i) => _buildUserItemWidget(users[i]),
+                  separatorBuilder: (_, __) => Styles.defaultSpacing.vertical,
+                  itemCount: users.length,
+                ),
               if (isLoadMoreLoading) _buildLoadMoreLoadingWidget(),
-              if (errorMessage.isNotEmpty)
-                _buildErrorWidget(errorMessage),
+              if (errorMessage.isNotEmpty) _buildErrorWidget(errorMessage),
             ],
           ),
         );
@@ -145,10 +171,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildErrorWidget(String errorMessage) {
-    return Text(
-      errorMessage,
-      style: context.textTheme.bodyMedium?.copyWith(
-        color: ColorValues.danger50,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: Styles.defaultPadding),
+      child: Text(
+        errorMessage,
+        style: context.textTheme.bodyMedium?.copyWith(
+          color: ColorValues.danger50,
+        ),
       ),
     );
   }

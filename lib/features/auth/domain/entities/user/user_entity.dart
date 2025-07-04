@@ -10,6 +10,7 @@ abstract class UserEntity with _$UserEntity {
     required int id,
     required String name,
     required String email,
+    String? description,
     String? imageUrl,
   }) = _UserEntity;
 

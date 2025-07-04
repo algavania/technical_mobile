@@ -5,6 +5,7 @@ import 'package:technical_mobile/data/pagination/pagination_model.dart';
 import 'package:technical_mobile/features/auth/data/models/user/user_model.dart';
 import 'package:technical_mobile/features/auth/domain/entities/user/user_entity.dart';
 import 'package:technical_mobile/features/home/domain/entities/user_pagination_entity.dart';
+import 'package:technical_mobile/util/image_util.dart';
 import 'package:technical_mobile/util/network_util.dart';
 
 abstract class UserRemoteDataSource {
@@ -16,8 +17,15 @@ abstract class UserRemoteDataSource {
 
   Future<UserEntity> updateUser(
     String name,
+    String? description,
     String email,
     File? image,
+  );
+
+  Future<void> updatePassword(
+    String oldPassword,
+    String newPassword,
+    String confirmNewPassword,
   );
 }
 
@@ -42,7 +50,10 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
 
   @override
   Future<UserPaginationEntity> getUsers(
-      int limit, int page, String? search) async {
+    int limit,
+    int page,
+    String? search,
+  ) async {
     final res = await NetworkUtil.get(
       Uri.parse('${NetworkUtil.baseUrl}/user?limit=$limit&page=$page&search='
           '${search ?? ''}'),
@@ -59,21 +70,49 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
   }
 
   @override
-  Future<UserEntity> updateUser(String name, String email, File? image) async {
-    final formData = {
+  Future<UserEntity> updateUser(
+    String name,
+    String? description,
+    String email,
+    File? image,
+  ) async {
+    var finalImage = image;
+    if (finalImage != null) {
+      finalImage = await ImageUtil.compressFile(finalImage);
+    }
+    final formData = FormData.fromMap({
       'name': name,
+      'description': description,
       'email': email,
-      'image': image != null
-          ? MultipartFile.fromFileSync(image.path,
-              filename: image.path.split('/').last)
-          : null,
-    };
+      'image': finalImage != null
+          ? await MultipartFile.fromFile(
+              finalImage.path,
+              filename: finalImage.path.split('/').last,
+            )
+          : null, // Pass null if no image
+    });
+
     final res = await NetworkUtil.post(
       Uri.parse('${NetworkUtil.baseUrl}/user'),
-      headers: {'Content-Type': 'multipart/form-data'},
       body: formData,
     );
     final data = UserModel.fromJson(res.data as Map<String, dynamic>);
     return UserModel.toEntity(data);
+  }
+
+  @override
+  Future<void> updatePassword(
+    String oldPassword,
+    String newPassword,
+    String confirmNewPassword,
+  ) async {
+    await NetworkUtil.post(
+      Uri.parse('${NetworkUtil.baseUrl}/auth/update-password'),
+      body: {
+        'current_password': oldPassword,
+        'new_password': newPassword,
+        'new_password_confirmation': confirmNewPassword,
+      },
+    );
   }
 }
