@@ -13,6 +13,7 @@ You can download the latest version of the app from the following links:
 * **Profile**: Edit user profile and password.
 * **Splash**: Custom splash screen on app launch.
 * **Clean Architecture**: This app follows **Clean Architecture** principles, making the codebase easy to maintain and scale.
+* **Deep Link for Reset Password**: The app supports deep linking for the password reset process. When a user requests a password reset, they receive an email containing a deep link (e.g., `http://technical.domain.com/password/reset?token=token`). When this link is clicked, the app automatically opens the reset password screen with the provided token, allowing users to securely update their password within the app.
 
 ## Project Structure
 
