@@ -184,3 +184,50 @@ class SplashRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [UserDetailPage]
+class UserDetailRoute extends PageRouteInfo<UserDetailRouteArgs> {
+  UserDetailRoute({
+    required UserEntity user,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+         UserDetailRoute.name,
+         args: UserDetailRouteArgs(user: user, key: key),
+         initialChildren: children,
+       );
+
+  static const String name = 'UserDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<UserDetailRouteArgs>();
+      return UserDetailPage(user: args.user, key: args.key);
+    },
+  );
+}
+
+class UserDetailRouteArgs {
+  const UserDetailRouteArgs({required this.user, this.key});
+
+  final UserEntity user;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'UserDetailRouteArgs{user: $user, key: $key}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! UserDetailRouteArgs) return false;
+    return user == other.user && key == other.key;
+  }
+
+  @override
+  int get hashCode => user.hashCode ^ key.hashCode;
+}

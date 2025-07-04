@@ -52,5 +52,6 @@
   "newPasswordHint": "Enter your new password",
   "newPasswordConfirmation": "Your new password confirmation",
   "newPasswordConfirmationHint": "Enter your new password confirmation",
-  "noData": "No data available"
+  "noData": "No data available",
+  "noDescriptionYet": "This user has not added a description yet"
 }

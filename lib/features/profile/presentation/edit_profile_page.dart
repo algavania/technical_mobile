@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +38,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
       orElse: () => null,
     );
     if (user != null) {
-      _nameController.text = user.name ?? '';
-      _emailController.text = user.email ?? '';
+      _nameController.text = user.name;
+      _emailController.text = user.email;
       _descriptionController.text = user.description ?? '';
     }
     super.initState();

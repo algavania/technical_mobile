@@ -131,7 +131,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       (failure) => emit(
         state.copyWith(getUserStatus: AsyncValue.error(failure.message)),
       ),
-      (user) => emit(state.copyWith(getUserStatus: AsyncValue.data(user))),
+      (user) {
+        emit(state.copyWith(getUserStatus: AsyncValue.data(user)));
+        emit(state.copyWith(getUserStatus: const AsyncValue.initial()));
+      },
     );
   }
 

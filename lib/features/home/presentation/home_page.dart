@@ -191,38 +191,43 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildUserItemWidget(UserEntity user) {
-    return Container(
-      padding: const EdgeInsets.all(Styles.defaultPadding),
-      decoration: BoxDecoration(
-        border: Border.all(color: ColorValues.primary50),
-        borderRadius: BorderRadius.circular(Styles.defaultBorder),
-      ),
-      child: Row(
-        spacing: Styles.defaultSpacing,
-        children: [
-          CircleAvatar(
-            radius: 24,
-            backgroundImage: user.imageUrl != null
-                ? NetworkImage(user.imageUrl!)
-                : const AssetImage('assets/images/avatar.webp'),
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  user.name,
-                  style: context.textTheme.titleMedium?.copyWith(fontSize: 16),
-                ),
-                Text(user.email),
-              ],
+    return GestureDetector(
+      onTap: () {
+        appRouter.push(UserDetailRoute(user: user));
+      },
+      child: Container(
+        padding: const EdgeInsets.all(Styles.defaultPadding),
+        decoration: BoxDecoration(
+          border: Border.all(color: ColorValues.primary50),
+          borderRadius: BorderRadius.circular(Styles.defaultBorder),
+        ),
+        child: Row(
+          spacing: Styles.defaultSpacing,
+          children: [
+            CircleAvatar(
+              radius: 24,
+              backgroundImage: user.imageUrl != null
+                  ? NetworkImage(user.imageUrl!)
+                  : const AssetImage('assets/images/avatar.webp'),
             ),
-          ),
-          const Icon(
-            Icons.chevron_right,
-            color: ColorValues.primary50,
-          ),
-        ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    user.name,
+                    style: context.textTheme.titleMedium?.copyWith(fontSize: 16),
+                  ),
+                  Text(user.email),
+                ],
+              ),
+            ),
+            const Icon(
+              Icons.chevron_right,
+              color: ColorValues.primary50,
+            ),
+          ],
+        ),
       ),
     );
   }

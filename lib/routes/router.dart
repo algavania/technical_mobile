@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:technical_mobile/features/auth/domain/entities/user/user_entity.dart';
 import 'package:technical_mobile/features/pages.dart';
 
 part 'router.gr.dart';
@@ -55,6 +56,11 @@ class AppRouter extends RootStackRouter {
     CustomRoute<void>(
       page: EditProfileRoute.page,
       path: '/edit-profile',
+      transitionsBuilder: TransitionsBuilders.fadeIn,
+    ),
+    CustomRoute<void>(
+      page: UserDetailRoute.page,
+      path: '/user-detail',
       transitionsBuilder: TransitionsBuilders.fadeIn,
     ),
   ];
