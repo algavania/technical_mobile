@@ -31,6 +31,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       bloc: _bloc,
+      listenWhen: (previous, current) =>
+          previous.forgotPasswordStatus != current.forgotPasswordStatus,
       listener: (context, state) {
         state.forgotPasswordStatus.maybeMap(
           loading: (_) {

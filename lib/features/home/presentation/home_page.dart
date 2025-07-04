@@ -183,9 +183,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildLoadMoreLoadingWidget() {
-    return const Center(
-      child: CircularProgressIndicator(
-        color: ColorValues.primary50,
+    return const Padding(
+      padding: EdgeInsets.all(Styles.defaultSpacing),
+      child: Center(
+        child: CircularProgressIndicator(
+          color: ColorValues.primary50,
+        ),
       ),
     );
   }

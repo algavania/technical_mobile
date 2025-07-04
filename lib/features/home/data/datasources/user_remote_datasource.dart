@@ -6,6 +6,7 @@ import 'package:technical_mobile/features/auth/data/models/user/user_model.dart'
 import 'package:technical_mobile/features/auth/domain/entities/user/user_entity.dart';
 import 'package:technical_mobile/features/home/domain/entities/user_pagination_entity.dart';
 import 'package:technical_mobile/util/image_util.dart';
+import 'package:technical_mobile/util/logger.dart';
 import 'package:technical_mobile/util/network_util.dart';
 
 abstract class UserRemoteDataSource {
@@ -91,6 +92,7 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
             )
           : null, // Pass null if no image
     });
+    logger.d('Update user form data: ${formData.fields}');
 
     final res = await NetworkUtil.post(
       Uri.parse('${NetworkUtil.baseUrl}/user'),

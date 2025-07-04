@@ -25,6 +25,12 @@ class _UserDetailPageState extends State<UserDetailPage> {
   final _bloc = Injector.instance<UserBloc>();
 
   @override
+  void initState() {
+    _bloc.add(UserEvent.getUser(_user.id));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, UserState>(
       bloc: _bloc,

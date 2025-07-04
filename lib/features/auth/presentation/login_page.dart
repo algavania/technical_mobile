@@ -34,6 +34,8 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       bloc: _bloc,
+      listenWhen: (previous, current) =>
+          previous.loginStatus != current.loginStatus,
       listener: (context, state) {
         state.loginStatus.maybeMap(
           loading: (_) {

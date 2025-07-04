@@ -14,7 +14,7 @@ class NetworkUtil {
   static final Dio _dio = Dio();
   static final _authRepository = Injector.instance<AuthRepository>();
   static const String baseUrl =
-      'https://e356-2001-448a-50e1-6704-d903-fa5d-ca01-5618.ngrok-free.app/api';
+      'http://technical.gbtaccess.com/api';
 
   static Future<ResponseModel> post(
       Uri url, {

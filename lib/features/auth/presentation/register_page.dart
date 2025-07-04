@@ -37,6 +37,8 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       bloc: _bloc,
+      listenWhen: (previous, current) =>
+          previous.registerStatus != current.registerStatus,
       listener: (context, state) {
         state.registerStatus.maybeMap(
           loading: (_) {

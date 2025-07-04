@@ -57,7 +57,8 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>technical</string>
+          <string>http</string>
+          <string>https</string>
         </array>
       </dict>
     </array>

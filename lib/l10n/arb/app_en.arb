@@ -31,7 +31,7 @@
   "loginSubText2": "Let's register!",
   "registerSubText": "Already have an account?",
   "registerSubText2": "Let's login!",
-  "forgotPassword": "Forgot password?",
+  "forgotPassword": "Forgot Password",
   "home": "Home",
   "registerSuccess": "You have successfully registered!",
   "passwordConfirmationError": "Password confirmation does not match",
@@ -53,5 +53,6 @@
   "newPasswordConfirmation": "Your new password confirmation",
   "newPasswordConfirmationHint": "Enter your new password confirmation",
   "noData": "No data available",
-  "noDescriptionYet": "This user has not added a description yet"
+  "noDescriptionYet": "This user has not added a description yet",
+  "resetPasswordSuccess": "Reset password success!"
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:sizer/sizer.dart';
+import 'package:technical_mobile/app/app.dart';
 import 'package:technical_mobile/core/color_values.dart';
 import 'package:technical_mobile/core/styles.dart';
 import 'package:technical_mobile/features/auth/presentation/bloc/auth_bloc.dart';
@@ -34,6 +35,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       bloc: _bloc,
+      listenWhen: (previous, current) =>
+          previous.resetPasswordStatus != current.resetPasswordStatus,
       listener: (context, state) {
         state.resetPasswordStatus.maybeMap(
           loading: (_) {
@@ -46,10 +49,13 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           data: (data) {
             context.loaderOverlay.hide();
             context.showSnackBar(
-              message: context.l10n.forgotPasswordSuccess,
+              message: context.l10n.resetPasswordSuccess,
             );
+            Future.delayed(const Duration(seconds: 1), appRouter.pop);
           },
-          orElse: () {},
+          orElse: () {
+            context.loaderOverlay.hide();
+          },
         );
       },
       child: Scaffold(

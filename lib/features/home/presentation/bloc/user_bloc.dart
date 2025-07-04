@@ -133,7 +133,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       ),
       (user) {
         emit(state.copyWith(getUserStatus: AsyncValue.data(user)));
-        emit(state.copyWith(getUserStatus: const AsyncValue.initial()));
       },
     );
   }
@@ -168,6 +167,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     final res = await _updateUser.call(
       UpdateUserParam(
         name: event.name,
+        description: event.description,
         email: event.email,
         image: event.image,
       ),
